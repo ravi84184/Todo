@@ -66,6 +66,8 @@ public class AddToDoActivity extends AppCompatActivity implements  DatePickerDia
     private String theme;
     AnalyticsApplication app;
 
+    private static final String TAG = "AddToDoActivity";
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -85,7 +87,7 @@ public class AddToDoActivity extends AppCompatActivity implements  DatePickerDia
         theme = getSharedPreferences(MainActivity.THEME_PREFERENCES, MODE_PRIVATE).getString(MainActivity.THEME_SAVED, MainActivity.LIGHTTHEME);
         if(theme.equals(MainActivity.LIGHTTHEME)){
             setTheme(R.style.CustomStyle_LightTheme);
-            Log.d("OskarSchindler", "Light Theme");
+            Log.d(TAG, "Light Theme");
         }
         else{
             setTheme(R.style.CustomStyle_DarkTheme);

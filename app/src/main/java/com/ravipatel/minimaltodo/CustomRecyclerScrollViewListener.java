@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 public abstract class CustomRecyclerScrollViewListener extends RecyclerView.OnScrollListener {
+    private static final String TAG = "CustomRecyclerScrollVie";
     int scrollDist = 0;
     boolean isVisible = true;
     static final float MINIMUM = 20;
@@ -14,19 +15,19 @@ public abstract class CustomRecyclerScrollViewListener extends RecyclerView.OnSc
 //        Log.d("OskarSchindler", "Scroll Distance "+scrollDist);
 
         if(isVisible && scrollDist>MINIMUM){
-            Log.d("OskarSchindler", "Hide "+scrollDist);
+            Log.d(TAG, "Hide "+scrollDist);
             hide();
             scrollDist = 0;
             isVisible = false;
         }
         else if(!isVisible && scrollDist < -MINIMUM){
-            Log.d("OskarSchindler", "Show "+scrollDist);
+            Log.d(TAG, "Show "+scrollDist);
             show();
             scrollDist = 0;
             isVisible =true;
         }
         if((isVisible && dy>0) || (!isVisible && dy<0)){
-            Log.d("OskarSchindler", "Add Up "+scrollDist);
+            Log.d(TAG, "Add Up "+scrollDist);
             scrollDist += dy;
         }
     }

@@ -11,8 +11,9 @@ import android.util.Log;
 import java.util.UUID;
 
 public class TodoNotificationService extends IntentService {
-    public static final String TODOTEXT = "com.avjindersekhon.todonotificationservicetext";
-    public static final String TODOUUID = "com.avjindersekhon.todonotificationserviceuuid";
+    private static final String TAG = "TodoNotificationService";
+    public static final String TODOTEXT = "todonotificationservicetext";
+    public static final String TODOUUID = "todonotificationserviceuuid";
     private String mTodoText;
     private UUID mTodoUUID;
     private Context mContext;
@@ -25,7 +26,7 @@ public class TodoNotificationService extends IntentService {
         mTodoText = intent.getStringExtra(TODOTEXT);
         mTodoUUID = (UUID)intent.getSerializableExtra(TODOUUID);
 
-        Log.d("OskarSchindler", "onHandleIntent called");
+        Log.d(TAG, "onHandleIntent called");
         NotificationManager manager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
         Intent i = new Intent(this, ReminderActivity.class);
         i.putExtra(TodoNotificationService.TODOUUID, mTodoUUID);

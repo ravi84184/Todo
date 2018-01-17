@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.TextView;
 
 public class AboutActivity extends AppCompatActivity {
+    private static final String TAG = "AboutActivity";
     private TextView mVersionTextView;
     private String appVersion = "0.1";
     private Toolbar toolbar;
@@ -30,11 +31,11 @@ public class AboutActivity extends AppCompatActivity {
 
         theme = getSharedPreferences(MainActivity.THEME_PREFERENCES, MODE_PRIVATE).getString(MainActivity.THEME_SAVED, MainActivity.LIGHTTHEME);
         if(theme.equals(MainActivity.DARKTHEME)){
-            Log.d("OskarSchindler", "One");
+            Log.d(TAG, "One");
             setTheme(R.style.CustomStyle_DarkTheme);
         }
         else{
-            Log.d("OskarSchindler", "One");
+            Log.d(TAG, "One");
             setTheme(R.style.CustomStyle_LightTheme);
         }
 

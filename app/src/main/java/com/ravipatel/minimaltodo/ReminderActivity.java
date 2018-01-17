@@ -25,6 +25,7 @@ import java.util.UUID;
 import fr.ganfra.materialspinner.MaterialSpinner;
 
 public class ReminderActivity extends AppCompatActivity{
+    private static final String TAG = "ReminderActivity";
     private TextView mtoDoTextTextView;
     private Button mRemoveToDoButton;
     private MaterialSpinner mSnoozeSpinner;
@@ -32,7 +33,7 @@ public class ReminderActivity extends AppCompatActivity{
     private StoreRetrieveData storeRetrieveData;
     private ArrayList<ToDoItem> mToDoItems;
     private ToDoItem mItem;
-    public static final String EXIT = "com.avjindersekhon.exit";
+    public static final String EXIT = "exit";
     private TextView mSnoozeTextView;
     String theme;
     AnalyticsApplication app;
@@ -164,7 +165,7 @@ public class ReminderActivity extends AppCompatActivity{
                 Date date = addTimeToDate(valueFromSpinner());
                 mItem.setToDoDate(date);
                 mItem.setHasReminder(true);
-                Log.d("OskarSchindler", "Date Changed to: " + date);
+                Log.d(TAG, "Date Changed to: " + date);
                 changeOccurred();
                 saveData();
                 closeApp();

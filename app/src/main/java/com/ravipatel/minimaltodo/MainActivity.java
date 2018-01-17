@@ -38,12 +38,12 @@ import java.util.Collections;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
-
+    private static final String TAG = "MainActivity";
     private RecyclerViewEmptySupport mRecyclerView;
     private FloatingActionButton mAddToDoItemFAB;
     private ArrayList<ToDoItem> mToDoItemsArrayList;
     private RelativeLayout mCoordLayout;
-    public static final String TODOITEM = "com.avjindersinghsekhon.com.avjindersinghsekhon.minimaltodo.MainActivity";
+    public static final String TODOITEM = "com.MainActivity";
     private BasicListAdapter adapter;
     private static final int REQUEST_ID_TODO_ITEM = 100;
     private ToDoItem mJustDeletedToDoItem;
@@ -54,15 +54,15 @@ public class MainActivity extends AppCompatActivity {
     private StoreRetrieveData storeRetrieveData;
     public ItemTouchHelper itemTouchHelper;
     private CustomRecyclerScrollViewListener customRecyclerScrollViewListener;
-    public static final String SHARED_PREF_DATA_SET_CHANGED = "com.avjindersekhon.datasetchanged";
-    public static final String CHANGE_OCCURED = "com.avjinder.changeoccured";
+    public static final String SHARED_PREF_DATA_SET_CHANGED = "datasetchanged";
+    public static final String CHANGE_OCCURED = "changeoccured";
     private int mTheme = -1;
     private String theme = "name_of_the_theme";
-    public static final String THEME_PREFERENCES = "com.avjindersekhon.themepref";
-    public static final String RECREATE_ACTIVITY = "com.avjindersekhon.recreateactivity";
-    public static final String THEME_SAVED = "com.avjindersekhon.savedtheme";
-    public static final String DARKTHEME = "com.avjindersekon.darktheme";
-    public static final String LIGHTTHEME = "com.avjindersekon.lighttheme";
+    public static final String THEME_PREFERENCES = "themepref";
+    public static final String RECREATE_ACTIVITY = "recreateactivity";
+    public static final String THEME_SAVED = "savedtheme";
+    public static final String DARKTHEME = "darktheme";
+    public static final String LIGHTTHEME = "lighttheme";
     private AnalyticsApplication app;
     private String[] testStrings = {"Clean my room",
             "Water the plants",
@@ -401,7 +401,7 @@ public class MainActivity extends AppCompatActivity {
             PendingIntent pi = PendingIntent.getService(this, requestCode,i, PendingIntent.FLAG_NO_CREATE);
             pi.cancel();
             getAlarmManager().cancel(pi);
-            Log.d("OskarSchindler", "PI Cancelled " + doesPendingIntentExist(i, requestCode));
+            Log.d(TAG, "PI Cancelled " + doesPendingIntentExist(i, requestCode));
         }
     }
 
