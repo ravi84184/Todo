@@ -6,6 +6,10 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.util.Log;
 
 import java.util.UUID;
@@ -23,6 +27,7 @@ public class TodoNotificationService extends IntentService {
     }
     @Override
     protected void onHandleIntent(Intent intent) {
+
         mTodoText = intent.getStringExtra(TODOTEXT);
         mTodoUUID = (UUID)intent.getSerializableExtra(TODOUUID);
 
@@ -37,29 +42,31 @@ public class TodoNotificationService extends IntentService {
                 .setSmallIcon(R.drawable.ic_done_white_24dp)
                 .setAutoCancel(true)
                 .setDefaults(Notification.DEFAULT_SOUND)
+                .setDefaults(Notification.DEFAULT_VIBRATE)
                 .setDeleteIntent(PendingIntent.getService(this, mTodoUUID.hashCode(), deleteIntent, PendingIntent.FLAG_UPDATE_CURRENT))
                 .setContentIntent(PendingIntent.getActivity(this, mTodoUUID.hashCode(), i, PendingIntent.FLAG_UPDATE_CURRENT))
                 .build();
 
         manager.notify(100, notification);
-//        Uri defaultRingone = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-//        MediaPlayer mp = new MediaPlayer();
-//        try{
-//            mp.setDataSource(this, defaultRingone);
-//            mp.setAudioStreamType(AudioManager.STREAM_NOTIFICATION);
-//            mp.prepare();
-//            mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-//                @Override
-//                public void onCompletion(MediaPlayer mp) {
-//                    mp.release();
-//                }
-//            });
-//            mp.start();
-//
-//        }
-//        catch (Exception e){
-//            e.printStackTrace();
-//        }
+
+        Uri defaultRingone = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        MediaPlayer mp = new MediaPlayer();
+        try{
+            mp.setDataSource(this, defaultRingone);
+            mp.setAudioStreamType(AudioManager.STREAM_NOTIFICATION);
+            mp.prepare();
+            mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    mp.release();
+                }
+            });
+            mp.start();
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
 }

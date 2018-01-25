@@ -339,8 +339,8 @@ public class MainActivity extends AppCompatActivity {
 //                this.recreate();
 //                return true;
             case R.id.preferences:
-                Intent intent = new Intent(this, SettingsActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(this, SettingsActivity.class);
+//                startActivity(intent);
                 return true;
 
             default:

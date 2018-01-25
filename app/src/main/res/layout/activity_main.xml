@@ -54,12 +54,12 @@
         <!--</android.support.design.widget.AppBarLayout>-->
 
 
-            <com.ravipatel.minimaltodo.RecyclerViewEmptySupport
-                android:layout_below="@+id/appbar"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                android:id="@+id/toDoRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+        <com.ravipatel.minimaltodo.RecyclerViewEmptySupport
+            android:layout_below="@+id/appbar"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:id="@+id/toDoRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
 
         <android.support.design.widget.FloatingActionButton
